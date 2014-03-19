@@ -44,10 +44,10 @@
         <li>YAML</li>
         <li>Autoloading</li>
         <li>Controllers</li>
+        <li>Routing</li>
         <li>Service containers</li>
         <li>Dependency injection</li>
-        <li>Routing</li>
-        <li>Templates</li>
+        <li>Twig Templates</li>
         <li>Plugins</li>
       </ol> 
     </div>
@@ -75,8 +75,7 @@ dependencies:
 description = "A demo module used to explain the basics."
 core = 7.x
 package = "D8 Demo"
-dependencies[] = node
-</code></pre>
+dependencies[] = node</code></pre>
     </div>
     <div id="yml-why" class="step auto">
       <h1 class="drupal">Why YAML?</h1>
@@ -110,10 +109,11 @@ dependencies[] = node
     <pre><code class="language-php">\Guzzle\Common\Event => /Guzzle/Common/Event.php</code></pre>
     <pre><code class="language-php">\Symfony\Component\Yaml\Parser => /Symfony/Component/Yaml/Parser.php</code></pre>
     <pre><code class="language-php">\Drupal\Core\Config\FileStorage => /Drupal/Core/Config/FileStorage.php</code></pre>
+    <pre><code class="language-php">\namespace\package\Class_Name => /namespace/package/Class/Name.php</code></pre>
   </div>
   <div id="psr-0-avoid-col" class="step auto">
     <h1>Avoiding Namespace Collisions</h1>
-    <img src="images/psr-0-avoid-col.png" />
+    <img src="images/psr-0-avoid-col.png" width="980px" />
     <pre><code class="language-php">&lt;?php
 
 namespace Guzzle\Common;
@@ -125,9 +125,178 @@ use Symfony\Component\EventDispatcher\Event as SymfonyEvent;
  */
 class Event extends SymfonyEvent implements ToArrayInterface, \ArrayAccess, \IteratorAggregate
 {
-...
-</code></pre>
+...</code></pre>
     </div>
+    <div id="autoloading-d8-module" class="step auto">
+      <h1 class="drupal">Drupal 8 Module</h1>
+      <code class="language-php">\Drupal\demo\Controller\MyController =></code>
+      <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/MyController.php</code>
+      <pre><code class="language-php">&lt;?php
+
+namespace Drupal\demo\Controller;
+
+class MyController {
+
+  private function text() {
+    return t('Hello, world');
+  }
+
+  public function page() {
+    return array(
+      '#type' => 'markup',
+      '#markup' => $this->text(),
+    );
+  }
+
+}</code></pre>
+  </div>
+  <div id="d8-class-inheritance" class="step auto">
+    <h1 class="drupal">Class Inheritance</h1>
+    <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/FinalController.php</code>
+    <pre><code class="language-php">&lt;?php
+
+namespace Drupal\demo\Controller;
+
+use Drupal\demo\Controller\MyController;
+
+class FinalController extends MyController {
+
+  final public function page() {
+    return array(
+      '#type' => 'markup',
+      '#markup' => t('Goodbye, cruel world!'),
+    );
+  }
+
+}</code></pre>
+  </div>
+  <div id="what-is-a-controller" class="step auto">
+    <h1>What is a Controller?</h1>
+    <blockquote>A controller is a PHP function you create that takes information from the HTTP request and constructs and returns an HTTP response (as a Symfony2 Response object). The response could be an HTML page, an XML document, a serialized JSON array, an image, a redirect, a 404 error or anything else you can dream up. The controller contains whatever arbitrary logic your application needs to render the content of a page.<br /><a href="http://symfony.com/doc/current/book/controller.html" target="blank">http://symfony.com/doc/current/book/controller.html</a></blockquote>
+    <h2 class="drupal">Our Demo Controller</h2>
+    <code class="language-php">/Drupal/demo/Controller/MyController::page</code>
+  </div>
+  <div id="drupal-8-routing" class="step auto">
+    <h1 class="drupal">Drupal 8 Routing</h1>
+    <blockquote>A route is a path which is defined for Drupal to return some sort of content on. For example, the default front page, '/node' is a route. When Drupal receives a request, it tries to match the requested path to a route it knows about. If the route is found, then the route's definition is used to return content. Otherwise, Drupal returns a 404.</blockquote>
+    <div class="whitebg" style="width:820px; padding-top:10px;"><img src="images/drupal-8-routing.png" width="800px" /></div>
+    <blockquote>Drupal's routing system works with the Symfony HTTP Kernel [and] is responsible for matching paths to controllers, and you define those relations in routes. You can pass on additional information to your controllers in the route and access checking is integrated.</blockquote>
+<br /><a href="http://drupal.org/developing/api/8/routing" target="_blank">http://drupal.org/developing/api/8/routing</a>
+  </div>
+  <div id="d8-routing-example" class="step auto">
+    <h1 class="drupal">Drupal 8 Routing Example</h1>
+    <code class="language-php small">/modules/demo/demo.routing.yml</code>
+    <pre><code class="language-php">demo_page:
+  path: '/hello'
+  defaults:
+    _title: 'Demo'
+    _content: 'Drupal\demo\Controller\MyController::page'
+  requirements:
+    _permission: 'access content'
+demo_final_page:
+  path: '/goodbye'
+  defaults:
+    _title: 'Demo'
+    _content: 'Drupal\demo\Controller\FinalController::page'
+  requirements:
+    _permission: 'access content'</code></pre>
+    <a href="http://drupal.org/node/2092643" target="_blank">http://drupal.org/node/2092643</a>
+  </div>
+  <div id="d7-routing-example" class="step auto">
+    <h1 class="drupal">Drupal 7 Routing Example</h1>
+    <code class="language-php small">/sites/all/modules/demo/demo.module</code>
+    <pre><code class="language-php">&lt;?php
+function demo_menu() {
+  $items['hello'] = array(
+    'title' => 'Demo',
+    'page callback' => 'demo_page',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+function demo_page() {
+  return t('Hello, world!');
+}</code></pre>
+  </div>
+  <div id="why-d8-routing-component" class="step auto">
+    <h1>Why use a <span class="symfony">Routing component?</span></h1>
+    <ol>
+      <li><span class="drupal">hook_menu()</span> did too much. From handling incoming requests to providing menu links. Everything was tied to it.</li>
+      <li>Because the hook function did so many things, all of these features were <span class="deprecated">tightly coupled</span> together.</li>
+      <li>Using the <span class="symfony">Symfony2 Routing component</span>, we are able to split out the route handling aspect into its own system.</li>
+      <li>We can now create routes on more than just the path, for example make a request for <span class="drupal">JSON, XML or HTML</span> while still using the same path.</li>
+    </ol>
+    <a href="http://www.previousnext.com.au/blog/using-drupal-8s-new-route-controllers" target="_blank" class="small">http://www.previousnext.com.au/blog/using-drupal-8s-new-route-controllers</a>
+  </div>
+  <div id="d8-access-checks" class="step auto">
+    <h1>Using Access Checks with Routes</h1>
+    Procedural access callbacks from Drupal 7 have been replaced by <span class="drupal">AccessCheck</a> services in Drupal 8.
+  </div>
+  <div id="d7-access-callback" class="step auto">
+    <h1 class="drupal">Drupal 7 Access Callback</h1>
+    <code class="language-php small">/sites/all/modules/demo/demo.module</code>
+    <pre><code class="language-php">&lt;?php
+function demo_menu() {
+  $items['hello'] = array(
+    'title' => 'Demo',
+    'page callback' => 'demo_page',
+    'access callback' => 'demo_anonymous_access_only',
+  );
+  return $items;
+}
+
+function demo_anonymous_access_only() {
+  global $user;
+  if (in_array('anonymous user', $user->roles)) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}</code></pre>
+  </div>
+  <div id="d8-access-check-setup" class="step auto">
+    <h1 class="drupal">Drupal 8 AccessCheck Discovery</h1>
+    <code class="language-php small">/modules/demo/demo.routing.yml</code>
+    <pre><code class="language-php">demo_final_page:
+  path: '/goodbye'
+  defaults:
+    _title: 'Demo'
+    _content: 'Drupal\demo\Controller\FinalController::page'
+  requirements:
+    _permission: 'access content'
+    _access_user_is_anonymous: 'TRUE'
+</code></pre>
+    <code class="language-php small">/modules/demo/demo.services.yml</code>
+    <pre><code class="language-php">services:
+  access_check.demo.user_is_anonymous:
+    class: Drupal\demo\Access\UserIsAnonymousAccessCheck
+    tags:
+      - { name: access_check }</code></pre>
+  </div>
+  <div id="d8-access-check-interface" class="step auto">
+    <h1 class="drupal">Drupal 8 AccessCheckInterface</h1>
+    <code class="language-php small">/modules/demo/lib/Drupal/demo/Access/UserIsAnonymousAccessCheck.php</code>
+    <pre><code class="language-php">&lt;?php
+
+namespace Drupal\demo\Access;
+
+use Drupal\Core\Access\AccessCheckInterface;
+use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\Routing\Route;
+use Symfony\Component\HttpFoundation\Request;
+
+class UserIsAnonymousAccessCheck implements AccessCheckInterface {
+
+  public function applies(Route $route) {
+    return $route->hasRequirement('_access_user_is_anonymous');
+  }
+
+  public function access(Route $route, Request $request, AccountInterface $account) {
+    return (!$account->isAnonymous() ? static::DENY : static::ALLOW);
+  }
+}</code></pre>
   <!-- End slides --!>  
   </div>
   <div class="hint">
