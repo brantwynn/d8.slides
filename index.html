@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Building Drupal 8 Modules</title>
+  <meta charset="utf-8">
+  <meta content="width=1024" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="A presentation about D8 module development." name="description">
+  <meta content="Brant Wynn" name="author">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+
+  <link href="css/reset.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <!-- link href="css/prism/default.css" rel="stylesheet" --!>
+  <!-- link href="css/prism/okaidia.css" rel="stylesheet" --!>
+  <link href="css/prism/coy.css" rel="stylesheet">
+  <!-- link href="css/prism/solarized-dark.css" rel="stylesheet" --!>
+
+  <link href="images/favicon.png" rel="shortcut icon">
+  <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
+</head>
+
+<body class="impress-not-supported">
+  <div class="fallback-message">
+    <p>Your browser <strong>doesn't support the features required</strong> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <strong>Chrome</strong>, <strong>Safari</strong> or <strong>Firefox</strong> browser.</p>
+  </div>
+
+  <div id="impress">
+    <!-- Begin slides --!>  
+    <div id="start" class="step" data-x="-980" data-y="0" data-z="-500">
+      <div id="d8logo" class="center"><img src="images/d8.png" /></div>
+    </div>
+    <div id="building" class="step title" data-x="0" data-y="0" data-z="0">
+      Building Modules for <span class="drupal">Drupal 8</span>
+    </div>
+    <div id="modules" class="step title" data-x="193" data-y="0" data-z="0">
+      Modules
+    </div>
+    <div id="overview" class="step auto">
+      <h1><span class="drupal">Drupal 8</span> Basics</h1>
+      <ol>
+        <li>YAML</li>
+        <li>Autoloading</li>
+        <li>Controllers</li>
+        <li>Service containers</li>
+        <li>Dependency injection</li>
+        <li>Routing</li>
+        <li>Templates</li>
+        <li>Plugins</li>
+      </ol> 
+    </div>
+    <div id="yml-info" class="step auto">
+    <h1 class="drupal">YAML</h1>
+    <h1><strike>Yet Another Markup Language</strike>*</h1>
+      * YAML Ain't Markup Language
+     <blockquote>"YAML is a human friendly data serialization standard for all programming languages."<br /><a href="http://yaml.org" target="_blank" class="right">-yaml.org</a></blockquote>
+    </div>
+    <div id="yml-d8-code" class="step auto">
+      <h1 class="drupal">Drupal 8</h1>
+      Info File: <strong>demo.info.yml</strong>
+      <pre><code class="language-php">name: Demo Module
+type: module
+description: "A demo module used to explain the basics."
+core: 8.x
+package: D8 Demo
+dependencies:
+ - node</code></pre>
+    </div>
+    <div id="yml-d7-code" class="step auto">
+      <h1 class="drupal">Drupal 7</h1>
+      Info File: <strong>demo.info</strong>
+      <pre><code class="language-php">name = Demo Module
+description = "A demo module used to explain the basics."
+core = 7.x
+package = "D8 Demo"
+dependencies[] = node
+</code></pre>
+    </div>
+    <div id="yml-why" class="step auto">
+      <h1 class="drupal">Why YAML?</h1>
+      <ol>
+        <li>YAML is both human editable and machine readable.</li>
+        <li>.yml files are not Drupal specific like .info files.</li>
+        <li>XML would require a Drupal specific schema.</li>
+        <li>JSON doesn't allow comments.</li>
+        <li>Non-ASCII characters require escaping in JSON.</li>
+      </ol>
+      <blockquote>"...and XML has cooties ;)"&nbsp;-chx<br /><a href="http://www.drupal4hu.com/node/377" target="_blank">http://www.drupal4hu.com/node/377</a></blockquote>
+    </div>
+    <div id="fig-psr-0" class="step auto">
+      <h1 class="drupal">FIG & PSR-0</h1>
+      <p>The Framework Interoperatabilty Group is a collection of individuals that discuss the commonalities between their PHP-based projects and find ways we can all work together.</p><p>This group established the PSR-0 standard which is a guideline to be followed for autoloader interoperability.</p>
+    </div>
+    <div id="what-is-psr-0" class="step auto">
+    <h1 class="drupal">PSR-0 Standard</h1>
+    <ul>
+      <li>A fully-qualified namespace and class must have the following structure <code class="language-markup">\&lt;Vendor Name>\(&lt;Namespace>\)*&lt;Class Name></code></li>
+      <li>Each namespace must have a top-level namespace ("Vendor Name").</li>
+      <li>Each namespace can have as many sub-namespaces as it wishes.</li>
+      <li>Each namespace separator is converted to a <code class="language-markup">DIRECTORY_SEPARATOR</code> when loading from the file system.</li>
+      <li>Each <code class="language-markup">_</code> character in the CLASS NAME is converted to a <code class="language-markup">DIRECTORY_SEPARATOR</code>. The <code class="language-markup">_</code> character has no special meaning in the namespace.</li>
+      <li>The fully-qualified namespace and class is suffixed with .php when loading from the file system.</li>
+      <li>Alphabetic characters in vendor names, namespaces, and class names may be of any combination of lower case and upper case.</li>
+    </ul>
+  </div>
+  <div id="psr-0-examples" class="step auto">
+    <h1 class="drupal">PSR-0 Examples</h1>
+    <pre><code class="language-php">\Guzzle\Common\Event => /Guzzle/Common/Event.php</code></pre>
+    <pre><code class="language-php">\Symfony\Component\Yaml\Parser => /Symfony/Component/Yaml/Parser.php</code></pre>
+    <pre><code class="language-php">\Drupal\Core\Config\FileStorage => /Drupal/Core/Config/FileStorage.php</code></pre>
+  </div>
+  <div id="psr-0-avoid-col" class="step auto">
+    <h1>Avoiding Namespace Collisions</h1>
+    <img src="images/psr-0-avoid-col.png" />
+    <pre><code class="language-php">&lt;?php
+
+namespace Guzzle\Common;
+
+use Symfony\Component\EventDispatcher\Event as SymfonyEvent;
+
+/**
+ * Default event for Guzzle notifications
+ */
+class Event extends SymfonyEvent implements ToArrayInterface, \ArrayAccess, \IteratorAggregate
+{
+...
+</code></pre>
+    </div>
+  <!-- End slides --!>  
+  </div>
+  <div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/impress.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/init.js"></script>
+  </body>
+</html>
