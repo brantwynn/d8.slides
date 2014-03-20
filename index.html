@@ -41,27 +41,27 @@
     <div id="modules" class="step title" data-x="193" data-y="0" data-z="0">
       Modules
     </div>
-    <div id="overview" class="step auto">
+    <div id="overview" class="step ahead">
       <h1><span class="drupal">Drupal 8</span> Basics</h1>
       <ol>
         <li>YAML</li>
-        <li>Autoloading</li>
+        <li>PSR-0 Autoloading</li>
         <li>Controllers</li>
         <li>Routing</li>
-        <li>Service containers</li>
-        <li>Dependency injection</li>
+        <li>Configuration Management</li>
         <li>Twig Templates</li>
+        <li>Service Containers</li>
         <li>Plugins</li>
       </ol> 
       <i class="fa fa-cogs fa-5x bottom"></i>
     </div>
-    <div id="yml-info" class="step auto">
+    <div id="yml-info" class="step ahead">
     <h1 class="drupal">YAML</h1>
     <h1><strike>Yet Another Markup Language</strike>*</h1>
       * YAML Ain't Markup Language
      <blockquote>"YAML is a human friendly data serialization standard for all programming languages."<br /><a href="http://yaml.org" target="_blank" class="right">-yaml.org</a></blockquote>
     </div>
-    <div id="yml-why" class="step auto">
+    <div id="yml-why" class="step ahead">
       <h1 class="drupal">Why YAML?</h1>
       <ol>
         <li>YAML is both human editable and machine readable.</li>
@@ -72,7 +72,7 @@
       </ol>
       <blockquote>"...and XML has cooties ;)"&nbsp;-chx<br /><a href="http://www.drupal4hu.com/node/377" target="_blank">http://www.drupal4hu.com/node/377</a></blockquote>
     </div>
-    <div id="d7-info-file" class="step auto">
+    <div id="d7-info-file" class="step ahead">
       <h1 class="drupal">Drupal 7</h1>
       Info File: <strong>demo.info</strong>
       <pre><code class="language-php">name = Demo Module
@@ -81,7 +81,7 @@ core = 7.x
 package = "D7 Demo"
 dependencies[] = node</code></pre>
     </div>
-    <div id="d8-info-yml-file" class="step auto">
+    <div id="d8-info-yml-file" class="step ahead">
       <h1 class="drupal">Drupal 8</h1>
       Info File: <strong>demo.info.yml</strong>
       <pre><code class="language-php">name: Demo Module
@@ -92,12 +92,12 @@ package: D8 Demo
 dependencies:
  - node</code></pre>
     </div>
-    <div id="fig-psr-0" class="step auto">
+    <div id="fig-psr-0" class="step ahead">
       <i class="fa fa-users fa-5x top"></i>
       <h1 class="drupal">FIG & PSR-0</h1>
       <p>The Framework Interoperatabilty Group is a collection of individuals that discuss the commonalities between their PHP-based projects and find ways we can all work together.</p><p>This group established the PSR-0 standard which is a guideline to be followed for autoloader interoperability.</p>
     </div>
-    <div id="what-is-psr-0" class="step auto">
+    <div id="what-is-psr-0" class="step ahead">
     <h1 class="drupal">PSR-0 Standard</h1>
     <ul>
       <li>A fully-qualified namespace and class must have the following structure <code class="language-markup">\&lt;Vendor Name>\(&lt;Namespace>\)*&lt;Class Name></code></li>
@@ -109,14 +109,14 @@ dependencies:
       <li>Alphabetic characters in vendor names, namespaces, and class names may be of any combination of lower case and upper case.</li>
     </ul>
   </div>
-  <div id="psr-0-examples" class="step auto">
+  <div id="psr-0-examples" class="step ahead">
     <h1 class="drupal">PSR-0 Examples</h1>
     <pre><code class="language-php">\Guzzle\Common\Event => /Guzzle/Common/Event.php</code></pre>
     <pre><code class="language-php">\Symfony\Component\Yaml\Parser => /Symfony/Component/Yaml/Parser.php</code></pre>
     <pre><code class="language-php">\Drupal\Core\Config\FileStorage => /Drupal/Core/Config/FileStorage.php</code></pre>
     <pre><code class="language-php">\namespace\package\Class_Name => /namespace/package/Class/Name.php</code></pre>
   </div>
-  <div id="psr-0-avoid-col" class="step auto">
+  <div id="psr-0-avoid-col" class="step ahead">
     <h1>Avoiding <span class="symfony">Namespace Collisions</span></h1>
     <img src="images/psr-0-avoid-col.png" width="980px" />
     <pre><code class="language-php">&lt;?php
@@ -132,7 +132,7 @@ class Event extends SymfonyEvent implements ToArrayInterface, \ArrayAccess, \Ite
 {
 ...</code></pre>
     </div>
-    <div id="autoloading-d8-module" class="step auto">
+    <div id="autoloading-d8-module" class="step ahead">
       <h1 class="drupal">Drupal 8 Module</h1>
       <code class="language-php">\Drupal\demo\Controller\MyController =></code>
       <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/MyController.php</code>
@@ -155,7 +155,7 @@ class MyController {
 
 }</code></pre>
   </div>
-  <div id="d8-class-inheritance" class="step auto">
+  <div id="d8-class-inheritance" class="step ahead">
     <h1 class="drupal">Class Inheritance</h1>
     <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/FinalController.php</code>
     <pre><code class="language-php">&lt;?php
@@ -175,21 +175,21 @@ class FinalController extends MyController {
 
 }</code></pre>
   </div>
-  <div id="what-is-a-controller" class="step auto">
+  <div id="what-is-a-controller" class="step ahead">
     <i class="fa fa-gamepad fa-5x top"></i>
     <h1>What is a Controller?</h1>
     <blockquote>A controller is a PHP function you create that takes information from the HTTP request and constructs and returns an HTTP response (as a Symfony2 Response object). The response could be an HTML page, an XML document, a serialized JSON array, an image, a redirect, a 404 error or anything else you can dream up. The controller contains whatever arbitrary logic your application needs to render the content of a page.<br /><a href="http://symfony.com/doc/current/book/controller.html" target="blank">http://symfony.com/doc/current/book/controller.html</a></blockquote>
     <h2 class="drupal">Our Demo Controller</h2>
     <code class="language-php">/Drupal/demo/Controller/MyController::page</code>
   </div>
-  <div id="drupal-8-routing" class="step auto">
+  <div id="drupal-8-routing" class="step ahead">
     <h1 class="drupal">Drupal 8 Routing</h1>
     <blockquote>A route is a path which is defined for Drupal to return some sort of content on. For example, the default front page, '/node' is a route. When Drupal receives a request, it tries to match the requested path to a route it knows about. If the route is found, then the route's definition is used to return content. Otherwise, Drupal returns a 404.</blockquote>
     <div class="whitebg" style="width:820px; padding-top:10px;"><img src="images/drupal-8-routing.png" width="800px" /></div>
     <blockquote>Drupal's routing system works with the Symfony HTTP Kernel [and] is responsible for matching paths to controllers, and you define those relations in routes. You can pass on additional information to your controllers in the route and access checking is integrated.</blockquote>
 <br /><a href="http://drupal.org/developing/api/8/routing" target="_blank">http://drupal.org/developing/api/8/routing</a>
   </div>
-  <div id="d7-routing-example" class="step auto">
+  <div id="d7-routing-example" class="step ahead">
     <h1 class="drupal">Drupal 7 Routing Example</h1>
     <code class="language-php small">/sites/all/modules/demo/demo.module</code>
     <pre><code class="language-php">&lt;?php
@@ -206,7 +206,7 @@ function demo_page() {
   return t('Hello, world!');
 }</code></pre>
   </div>
-  <div id="d8-routing-example" class="step auto">
+  <div id="d8-routing-example" class="step ahead">
     <h1 class="drupal">Drupal 8 Routing Example</h1>
     <code class="language-php small">/modules/demo/demo.routing.yml</code>
     <pre><code class="language-php">demo_page:
@@ -225,7 +225,7 @@ demo_final_page:
     _permission: 'access content'</code></pre>
     <a href="http://drupal.org/node/2092643" target="_blank">http://drupal.org/node/2092643</a>
   </div>
-  <div id="why-d8-routing-component" class="step auto">
+  <div id="why-d8-routing-component" class="step ahead">
     <h1>Why use a <span class="symfony">Routing component?</span></h1>
     <ol>
       <li><span class="drupal">hook_menu()</span> did too much. From handling incoming requests to providing menu links. Everything was tied to it.</li>
@@ -235,14 +235,14 @@ demo_final_page:
     </ol>
     <a href="http://www.previousnext.com.au/blog/using-drupal-8s-new-route-controllers" target="_blank" class="small">http://www.previousnext.com.au/blog/using-drupal-8s-new-route-controllers</a>
   </div>
-  <div id="d8-access-checks" class="step auto">
+  <div id="d8-access-checks" class="step ahead">
     <h1>Using Access Checks with Routes</h1>
     Procedural access callbacks from Drupal 7 have been replaced by <span class="drupal">AccessCheck</a> services in Drupal 8.
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <i class="fa fa-lock fa-5x bottom"></i>
   </div>
-  <div id="d7-access-callback" class="step auto">
+  <div id="d7-access-callback" class="step ahead">
     <h1 class="drupal">Drupal 7 Access Callback</h1>
     <code class="language-php small">/sites/all/modules/demo/demo.module</code>
     <pre><code class="language-php">&lt;?php
@@ -265,7 +265,7 @@ function demo_anonymous_access_only() {
   }
 }</code></pre>
   </div>
-  <div id="d8-access-check-setup" class="step auto">
+  <div id="d8-access-check-setup" class="step ahead">
     <h1 class="drupal">Drupal 8 AccessCheck Discovery</h1>
     <code class="language-php small">/modules/demo/demo.routing.yml</code>
     <pre><code class="language-php">demo_final_page:
@@ -284,7 +284,7 @@ function demo_anonymous_access_only() {
     tags:
       - { name: access_check }</code></pre>
   </div>
-  <div id="d8-access-check-interface" class="step auto">
+  <div id="d8-access-check-interface" class="step ahead">
     <h1 class="drupal">Drupal 8 AccessCheckInterface</h1>
     <code class="language-php small">/modules/demo/lib/Drupal/demo/Access/UserIsAnonymousAccessCheck.php</code>
     <pre><code class="language-php">&lt;?php
@@ -307,7 +307,7 @@ class UserIsAnonymousAccessCheck implements AccessCheckInterface {
   }
 }</code></pre>
   </div>
-  <div id="d8-dynamic-routes" class="step auto">
+  <div id="d8-dynamic-routes" class="step ahead">
     <i class="fa fa-sitemap fa-5x top"></i>
     <p>&nbsp;</p>
     <h1 class="drupal">Dynamic Routes in Drupal 8</h1>
@@ -316,7 +316,7 @@ class UserIsAnonymousAccessCheck implements AccessCheckInterface {
     <p>In Drupal 7, we created dynamic routes with a loop in <span class="deprecated">hook_menu()</span>.</p>
     <p>In <span class="drupal">Drupal 8</span>, dynamic routes are created in a callback method.</p>
   </div>
-  <div id="d7-dynamic-routes-example" class="step auto">
+  <div id="d7-dynamic-routes-example" class="step ahead">
     <h1 class="drupal">Drupal 7 Dynamic Route Example</h1>
     <code class="language-php small">/sites/all/modules/octocat/octocat.module</code>
     <pre><code class="language-php">&lt;?php
@@ -332,7 +332,7 @@ function octocat_menu() {
   return $items;
 }</code></pre>
   </div>
-  <div id="d8-dynamic-route-callbacks" class="step auto">
+  <div id="d8-dynamic-route-callbacks" class="step ahead">
     <i class="fa fa-github fa-5x top"></i>
     <h1 class="drupal">Drupal 8 Dynamic Routing</h1>
     <h2>Declaring 'route_callbacks' in module.routing.yml</h2>
@@ -340,7 +340,7 @@ function octocat_menu() {
     <pre><code class="language-php">route_callbacks:
   - '\Drupal\octocat\Routing\OctoCatRoutes::routes'</code></pre>
   </div>
- <div id="d8-dynamic-routing-method" class="step auto">
+ <div id="d8-dynamic-routing-method" class="step ahead">
     <h2><span class="drupal">Drupal 8 Dynamic Routing</span> Example Routing Method</h2>
     <code class="language-php small">/modules/octocat/lib/Drupal/cat/Routing/OctoCatRoutes.php</code>
     <pre><code class="language-php">&lt;?php
@@ -374,7 +374,8 @@ class OctoCatRoutes {
   </div>
   <script src="js/jquery.min.js"></script>
   <script src="js/impress.js"></script>
-  <script src="js/prism.js"></script>
+  <script src="js/imps.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/prism.js"></script>
   </body>
 </html>
