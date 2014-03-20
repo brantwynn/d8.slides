@@ -31,7 +31,7 @@ var imps = {
     });
     $(".step.behind").each(function() {
       a = 'data-x';
-      p = ($(this).prev('.step').attr(a)) ? parseInt($(this).prev('.step').attr(a)) : 0;
+      p = ($(this).prev().attr(a)) ? parseInt($(this).prev().attr(a)) : 0;
       $(this).attr(a, p-imps.w);
       imps.cleanup($(this));
     });
