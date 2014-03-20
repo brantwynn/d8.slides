@@ -131,6 +131,21 @@ pre {
   background: #FFF;
 }
 
+i {
+  position: absolute;
+  right: 0;
+  color: #333;
+  z-index: -99;
+}
+
+i.top {
+  top: 0;
+}
+
+i.bottom {
+  bottom: 0;
+}
+
 .hint {
     /*
         We hide the hint until presentation is started and from browsers not supporting
