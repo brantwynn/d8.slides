@@ -32,13 +32,13 @@
 
   <div id="impress">
     <!-- Begin slides -->
-    <div id="start" class="step" data-x="-980" data-y="-20" data-z="-490">
+    <div id="start" class="step persist" data-x="-980" data-y="-20" data-z="-490">
       <div id="d8logo" class="center"><img src="images/d8.png" /></div>
     </div>
-    <div id="building" class="step title" data-x="0" data-y="0" data-z="0">
+    <div id="building" class="step title persist" data-x="0" data-y="0" data-z="0">
       Building Modules for <span class="drupal">Drupal 8</span>
     </div>
-    <div id="modules" class="step title" data-x="193" data-y="0" data-z="0">
+    <div id="modules" class="step title persist" data-x="193" data-y="0" data-z="0">
       Modules
     </div>
     <div id="overview" class="step ahead">
@@ -99,7 +99,7 @@ dependencies:
     </div>
     <div id="what-is-psr-0" class="step ahead">
       <h1 class="drupal">PSR-0 Standard</h1>
-      <ul>
+      <ul class="small">
         <li>A fully-qualified namespace and class must have the following structure <code class="language-markup">\&lt;Vendor Name>\(&lt;Namespace>\)*&lt;Class Name></code></li>
         <li>Each namespace must have a top-level namespace ("Vendor Name").</li>
         <li>Each namespace can have as many sub-namespaces as it wishes.</li>
@@ -119,9 +119,7 @@ dependencies:
       <div id="psr-0-avoid-col" class="step ahead">
       <h1>Avoiding <span class="symfony">Namespace Collisions</span></h1>
       <img src="images/psr-0-avoid-col.png" width="980px" />
-      <pre><code class="language-php">&lt;?php
-
-namespace Guzzle\Common;
+      <pre><code class="language-php">namespace Guzzle\Common;
 
 use Symfony\Component\EventDispatcher\Event as SymfonyEvent;
 
@@ -136,9 +134,7 @@ class Event extends SymfonyEvent implements ToArrayInterface, \ArrayAccess, \Ite
         <h1 class="drupal">Drupal 8 Module</h1>
         <code class="language-php">\Drupal\demo\Controller\MyController =></code>
         <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/MyController.php</code>
-        <pre><code class="language-php">&lt;?php
-
-namespace Drupal\demo\Controller;
+        <pre><code class="language-php">namespace Drupal\demo\Controller;
 
 class MyController {
 
@@ -158,9 +154,7 @@ class MyController {
       <div id="d8-class-inheritance" class="step ahead">
         <h1 class="drupal">Class Inheritance</h1>
         <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/FinalController.php</code>
-        <pre><code class="language-php">&lt;?php
-
-namespace Drupal\demo\Controller;
+        <pre><code class="language-php">namespace Drupal\demo\Controller;
 
 use Drupal\demo\Controller\MyController;
 
@@ -187,13 +181,12 @@ class FinalController extends MyController {
       <blockquote>A route is a path which is defined for Drupal to return some sort of content on. For example, the default front page, '/node' is a route. When Drupal receives a request, it tries to match the requested path to a route it knows about. If the route is found, then the route's definition is used to return content. Otherwise, Drupal returns a 404.</blockquote>
       <div class="whitebg" style="width:820px; padding-top:10px;"><img src="images/drupal-8-routing.png" width="800px" /></div>
       <blockquote>Drupal's routing system works with the Symfony HTTP Kernel [and] is responsible for matching paths to controllers, and you define those relations in routes. You can pass on additional information to your controllers in the route [while] access checking is integrated.</blockquote>
-      <br /><a href="http://drupal.org/developing/api/8/routing" target="_blank">http://drupal.org/developing/api/8/routing</a>
+      <a href="http://drupal.org/developing/api/8/routing" target="_blank">http://drupal.org/developing/api/8/routing</a>
     </div>
     <div id="d7-routing-example" class="step ahead">
       <h1 class="drupal">Drupal 7 Routing Example</h1>
     <code class="language-php small">/sites/all/modules/demo/demo.module</code>
-    <pre><code class="language-php">&lt;?php
-function demo_menu() {
+    <pre><code class="language-php">function demo_menu() {
   $items['hello'] = array(
     'title' => 'Demo',
     'page callback' => 'demo_page',
@@ -245,8 +238,7 @@ demo_final_page:
     <div id="d7-access-callback" class="step ahead">
       <h1><span class="drupal">Drupal 7</span> Access Callback</h1>
       <code class="language-php small">/sites/all/modules/demo/demo.module</code>
-      <pre><code class="language-php">&lt;?php
-function demo_menu() {
+      <pre><code class="language-php">function demo_menu() {
   $items['hello'] = array(
     'title' => 'Demo',
     'page callback' => 'demo_page',
@@ -287,9 +279,7 @@ function demo_anonymous_access_only() {
     <div id="d8-access-check-interface" class="step ahead">
       <h1><span class="drupal">Drupal 8</span> AccessCheckInterface</h1>
       <code class="language-php small">/modules/demo/lib/Drupal/demo/Access/UserIsAnonymousAccessCheck.php</code>
-      <pre><code class="language-php">&lt;?php
-
-namespace Drupal\demo\Access;
+      <pre><code class="language-php">namespace Drupal\demo\Access;
 
 use Drupal\Core\Access\AccessCheckInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -319,8 +309,7 @@ class UserIsAnonymousAccessCheck implements AccessCheckInterface {
     <div id="d7-dynamic-routes-example" class="step ahead">
       <h1><span class="drupal">Drupal 7</span> Dynamic Route Example</h1>
       <code class="language-php small">/sites/all/modules/octocat/octocat.module</code>
-      <pre><code class="language-php">&lt;?php
-function octocat_menu() {
+      <pre><code class="language-php">function octocat_menu() {
   $items = array();
   foreach (octocat_get_types() as $type) {
     $items['octocat/add/' . $type->machine_name] = array(
@@ -343,9 +332,7 @@ function octocat_menu() {
     <div id="d8-dynamic-routing-method" class="step ahead">
       <h2><span class="drupal">Drupal 8 Dynamic Routing</span> Example Routing Method</h2>
       <code class="language-php small">/modules/octocat/lib/Drupal/octocat/Routing/OctoCatRoutes.php</code>
-      <pre><code class="language-php">&lt;?php
-
-namespace Drupal\octocat\Routing;
+      <pre><code class="language-php">namespace Drupal\octocat\Routing;
 
 use Symfony\Component\Routing\Route;
 
@@ -429,6 +416,8 @@ class OctoCatRoutes {
 $gimme = new CookieSubscriber();
 // Returns a cookie with raisins in it. :\
 return $gimme->cookie;</code></pre>
+    </div>
+    <div id="di-cookie-example-proper" class="step behind">
       <h2>Dependency Injection</h2>
       <pre><code class="language-php">class CookieSubscriber {
   private $cookie;
@@ -593,8 +582,7 @@ $date = \Drupal::service('date');</pre>
     <div id ="drush-in-d8" class="step behind">
       <i class="fa fa-terminal fa-5x top"></i>
       Speaking of the command line...
-      <h1 class="drupal">Using Drush</h1>
-      Some quick observations about using Drush with Drupal 8
+      <h1 class="drupal">Using Drush in D8</h1>
       <ol>
         <li>The Drush project has moved all development to Github.</li>
         <li>Drush is now built using Composer, like so: <code class="language-php">composer global require drush/drush:dev-master</code></li>
@@ -603,11 +591,10 @@ $date = \Drupal::service('date');</pre>
         <li>Other commands are incompatible due to D8 changes, such as <span class="deprecated">drush dis [module]</span> (Hint: try <span class="drupal">drush pmu [module]</span>)</li>
         <li>Don't panic - drush will explain these changes when you attempt to use a deprecated or incompatible command.</li>
       </ol>
-      <a href="http://github.com/drush-ops/drush" target="_blank">http://github.com/drush-ops/drush</a>
+      <a class="small" href="http://github.com/drush-ops/drush" target="_blank">http://github.com/drush-ops/drush</a>
     </div>
     <div id="d8-twig-intro" class="step behind">
       <i class="fa fa-leaf fa-5x top"></i>
-      <h1 class="drupal">Drupal 8</h1>
       <h1 class="symfony">Twig Templating</h1>
     Twig is a flexible, fast, and secure template engine for PHP.
       <ul>
@@ -632,9 +619,7 @@ $date = \Drupal::service('date');</pre>
     <div id="d8-twig-controller" class="step behind">
       <h2><span class="drupal">Drupal 8 Twig Templating</span> Example Usage</h2>
       <code class="language-php small">/modules/octocat/lib/Drupal/octocat/Controller/OctoCatController.php</code>
-      <pre><code class="language-php">&lt;?php
-
-namespace Drupal\octocat\Controller;
+      <pre><code class="language-php">namespace Drupal\octocat\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -696,7 +681,7 @@ class DemoBlock extends BlockBase {
     <div id="d8-plugins-annotations" class="step behind">
       <i class="fa fa-comments fa-4x top"></i>
       <h1><span class="drupal">Drupal 8</span> Plugin Annotations</h1>
-      We need to be able to discover plugins automatically. We did not want to do this with hooks. Adding a <code class="language-php">getInfo()</code> method on each plugin class would be a huge memory overhead, requiring parsing the PHP of every plugin class during discovery.
+      We need to be able to discover plugins automatically. Adding a <code class="language-php">getInfo()</code> method on each plugin class could be a memory issue, requiring parsing the PHP of every plugin class during discovery.
       <pre><code class="language-php">/**
  * Provides a demo block.
  *
