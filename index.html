@@ -32,7 +32,7 @@
 
   <div id="impress">
     <!-- Begin slides -->
-    <div id="start" class="step" data-x="-980" data-y="0" data-z="-500">
+    <div id="start" class="step" data-x="-980" data-y="-20" data-z="-490">
       <div id="d8logo" class="center"><img src="images/d8.png" /></div>
     </div>
     <div id="building" class="step title" data-x="0" data-y="0" data-z="0">
@@ -98,28 +98,28 @@ dependencies:
       <p>The Framework Interoperatabilty Group is a collection of individuals that discuss the commonalities between their PHP-based projects and find ways we can all work together.</p><p>This group established the PSR-0 standard which is a guideline to be followed for autoloader interoperability.</p>
     </div>
     <div id="what-is-psr-0" class="step ahead">
-    <h1 class="drupal">PSR-0 Standard</h1>
-    <ul>
-      <li>A fully-qualified namespace and class must have the following structure <code class="language-markup">\&lt;Vendor Name>\(&lt;Namespace>\)*&lt;Class Name></code></li>
-      <li>Each namespace must have a top-level namespace ("Vendor Name").</li>
-      <li>Each namespace can have as many sub-namespaces as it wishes.</li>
-      <li>Each namespace separator is converted to a <code class="language-markup">DIRECTORY_SEPARATOR</code> when loading from the file system.</li>
-      <li>Each <code class="language-markup">_</code> character in the CLASS NAME is converted to a <code class="language-markup">DIRECTORY_SEPARATOR</code>. The <code class="language-markup">_</code> character has no special meaning in the namespace.</li>
-      <li>The fully-qualified namespace and class is suffixed with .php when loading from the file system.</li>
-      <li>Alphabetic characters in vendor names, namespaces, and class names may be of any combination of lower case and upper case.</li>
-    </ul>
-  </div>
-  <div id="psr-0-examples" class="step ahead">
-    <h1 class="drupal">PSR-0 Examples</h1>
-    <pre><code class="language-php">\Guzzle\Common\Event => /Guzzle/Common/Event.php</code></pre>
-    <pre><code class="language-php">\Symfony\Component\Yaml\Parser => /Symfony/Component/Yaml/Parser.php</code></pre>
-    <pre><code class="language-php">\Drupal\Core\Config\FileStorage => /Drupal/Core/Config/FileStorage.php</code></pre>
-    <pre><code class="language-php">\namespace\package\Class_Name => /namespace/package/Class/Name.php</code></pre>
-  </div>
-  <div id="psr-0-avoid-col" class="step ahead">
-    <h1>Avoiding <span class="symfony">Namespace Collisions</span></h1>
-    <img src="images/psr-0-avoid-col.png" width="980px" />
-    <pre><code class="language-php">&lt;?php
+      <h1 class="drupal">PSR-0 Standard</h1>
+      <ul>
+        <li>A fully-qualified namespace and class must have the following structure <code class="language-markup">\&lt;Vendor Name>\(&lt;Namespace>\)*&lt;Class Name></code></li>
+        <li>Each namespace must have a top-level namespace ("Vendor Name").</li>
+        <li>Each namespace can have as many sub-namespaces as it wishes.</li>
+        <li>Each namespace separator is converted to a <code class="language-markup">DIRECTORY_SEPARATOR</code> when loading from the file system.</li>
+        <li>Each <code class="language-markup">_</code> character in the CLASS NAME is converted to a <code class="language-markup">DIRECTORY_SEPARATOR</code>. The <code class="language-markup">_</code> character has no special meaning in the namespace.</li>
+        <li>The fully-qualified namespace and class is suffixed with .php when loading from the file system.</li>
+        <li>Alphabetic characters in vendor names, namespaces, and class names may be of any combination of lower case and upper case.</li>
+      </ul>
+    </div>
+    <div id="psr-0-examples" class="step ahead">
+      <h1 class="drupal">PSR-0 Examples</h1>
+      <pre><code class="language-php">\Guzzle\Common\Event => /Guzzle/Common/Event.php</code></pre>
+      <pre><code class="language-php">\Symfony\Component\Yaml\Parser => /Symfony/Component/Yaml/Parser.php</code></pre>
+      <pre><code class="language-php">\Drupal\Core\Config\FileStorage => /Drupal/Core/Config/FileStorage.php</code></pre>
+      <pre><code class="language-php">\namespace\package\Class_Name => /namespace/package/Class/Name.php</code></pre>
+    </div>
+      <div id="psr-0-avoid-col" class="step ahead">
+      <h1>Avoiding <span class="symfony">Namespace Collisions</span></h1>
+      <img src="images/psr-0-avoid-col.png" width="980px" />
+      <pre><code class="language-php">&lt;?php
 
 namespace Guzzle\Common;
 
@@ -131,12 +131,12 @@ use Symfony\Component\EventDispatcher\Event as SymfonyEvent;
 class Event extends SymfonyEvent implements ToArrayInterface, \ArrayAccess, \IteratorAggregate
 {
 ...</code></pre>
-    </div>
-    <div id="autoloading-d8-module" class="step ahead">
-      <h1 class="drupal">Drupal 8 Module</h1>
-      <code class="language-php">\Drupal\demo\Controller\MyController =></code>
-      <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/MyController.php</code>
-      <pre><code class="language-php">&lt;?php
+      </div>
+      <div id="autoloading-d8-module" class="step ahead">
+        <h1 class="drupal">Drupal 8 Module</h1>
+        <code class="language-php">\Drupal\demo\Controller\MyController =></code>
+        <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/MyController.php</code>
+        <pre><code class="language-php">&lt;?php
 
 namespace Drupal\demo\Controller;
 
@@ -154,11 +154,11 @@ class MyController {
   }
 
 }</code></pre>
-  </div>
-  <div id="d8-class-inheritance" class="step ahead">
-    <h1 class="drupal">Class Inheritance</h1>
-    <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/FinalController.php</code>
-    <pre><code class="language-php">&lt;?php
+      </div>
+      <div id="d8-class-inheritance" class="step ahead">
+        <h1 class="drupal">Class Inheritance</h1>
+        <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/FinalController.php</code>
+        <pre><code class="language-php">&lt;?php
 
 namespace Drupal\demo\Controller;
 
@@ -174,23 +174,23 @@ class FinalController extends MyController {
   }
 
 }</code></pre>
-  </div>
-  <div id="what-is-a-controller" class="step ahead">
-    <i class="fa fa-gamepad fa-5x top"></i>
-    <h1>What is a Controller?</h1>
-    <blockquote>A controller is a PHP function you create that takes information from the HTTP request [then] constructs and returns an HTTP response (as a Symfony2 Response object). The response could be an HTML page, an XML document, a serialized JSON array, an image, a redirect, a 404 error or anything else you can dream up. The controller contains whatever arbitrary logic your application needs to render the content of a page.<br /><a href="http://symfony.com/doc/current/book/controller.html" target="blank">http://symfony.com/doc/current/book/controller.html</a></blockquote>
-    <h2 class="drupal">Our Demo Controller</h2>
-    <code class="language-php">/Drupal/demo/Controller/MyController::page</code>
-  </div>
-  <div id="drupal-8-routing" class="step ahead">
-    <h1 class="drupal">Drupal 8 Routing</h1>
-    <blockquote>A route is a path which is defined for Drupal to return some sort of content on. For example, the default front page, '/node' is a route. When Drupal receives a request, it tries to match the requested path to a route it knows about. If the route is found, then the route's definition is used to return content. Otherwise, Drupal returns a 404.</blockquote>
-    <div class="whitebg" style="width:820px; padding-top:10px;"><img src="images/drupal-8-routing.png" width="800px" /></div>
-    <blockquote>Drupal's routing system works with the Symfony HTTP Kernel [and] is responsible for matching paths to controllers, and you define those relations in routes. You can pass on additional information to your controllers in the route [while] access checking is integrated.</blockquote>
-<br /><a href="http://drupal.org/developing/api/8/routing" target="_blank">http://drupal.org/developing/api/8/routing</a>
-  </div>
-  <div id="d7-routing-example" class="step ahead">
-    <h1 class="drupal">Drupal 7 Routing Example</h1>
+    </div>
+    <div id="what-is-a-controller" class="step ahead">
+      <i class="fa fa-gamepad fa-5x top"></i>
+      <h1>What is a Controller?</h1>
+      <blockquote>A controller is a PHP function you create that takes information from the HTTP request [then] constructs and returns an HTTP response (as a Symfony2 Response object). The response could be an HTML page, an XML document, a serialized JSON array, an image, a redirect, a 404 error or anything else you can dream up. The controller contains whatever arbitrary logic your application needs to render the content of a page.<br /><a href="http://symfony.com/doc/current/book/controller.html" target="blank">http://symfony.com/doc/current/book/controller.html</a></blockquote>
+      <h2 class="drupal">Our Demo Controller</h2>
+      <code class="language-php">/Drupal/demo/Controller/MyController::page</code>
+    </div>
+    <div id="drupal-8-routing" class="step ahead">
+      <h1 class="drupal">Drupal 8 Routing</h1>
+      <blockquote>A route is a path which is defined for Drupal to return some sort of content on. For example, the default front page, '/node' is a route. When Drupal receives a request, it tries to match the requested path to a route it knows about. If the route is found, then the route's definition is used to return content. Otherwise, Drupal returns a 404.</blockquote>
+      <div class="whitebg" style="width:820px; padding-top:10px;"><img src="images/drupal-8-routing.png" width="800px" /></div>
+      <blockquote>Drupal's routing system works with the Symfony HTTP Kernel [and] is responsible for matching paths to controllers, and you define those relations in routes. You can pass on additional information to your controllers in the route [while] access checking is integrated.</blockquote>
+      <br /><a href="http://drupal.org/developing/api/8/routing" target="_blank">http://drupal.org/developing/api/8/routing</a>
+    </div>
+    <div id="d7-routing-example" class="step ahead">
+      <h1 class="drupal">Drupal 7 Routing Example</h1>
     <code class="language-php small">/sites/all/modules/demo/demo.module</code>
     <pre><code class="language-php">&lt;?php
 function demo_menu() {
@@ -205,8 +205,8 @@ function demo_menu() {
 function demo_page() {
   return t('Hello, world!');
 }</code></pre>
-  </div>
-  <div id="d8-routing-example" class="step ahead">
+    </div>
+    <div id="d8-routing-example" class="step ahead">
     <h1 class="drupal">Drupal 8 Routing Example</h1>
     <code class="language-php small">/modules/demo/demo.routing.yml</code>
     <pre><code class="language-php">demo_page:
@@ -224,28 +224,28 @@ demo_final_page:
   requirements:
     _permission: 'access content'</code></pre>
     <a href="http://drupal.org/node/2092643" target="_blank">http://drupal.org/node/2092643</a>
-  </div>
-  <div id="why-d8-routing-component" class="step ahead">
-    <h1>Why use a <span class="symfony">Routing component?</span></h1>
-    <ol>
-      <li><span class="drupal">hook_menu()</span> did too much. From handling incoming requests to providing menu links. Everything was tied to it.</li>
-      <li>Because the hook function did so many things, all of these features were <span class="deprecated">tightly coupled</span> together.</li>
-      <li>Using the <span class="symfony">Symfony2 Routing component</span>, we are able to split out the route handling aspect into its own system.</li>
-      <li>We can now create routes on more than just the path, for example make a request for <span class="drupal">JSON, XML or HTML</span> while still using the same path.</li>
-    </ol>
-    <a href="http://www.previousnext.com.au/blog/using-drupal-8s-new-route-controllers" target="_blank" class="small">http://www.previousnext.com.au/blog/using-drupal-8s-new-route-controllers</a>
-  </div>
-  <div id="d8-access-checks" class="step ahead">
-    <h1>Using Access Checks with Routes</h1>
+    </div>
+    <div id="why-d8-routing-component" class="step ahead">
+      <h1>Why use a <span class="symfony">Routing component?</span></h1>
+      <ol>
+        <li><span class="drupal">hook_menu()</span> did too much. From handling incoming requests to providing menu links. Everything was tied to it.</li>
+        <li>Because the hook function did so many things, all of these features were <span class="deprecated">tightly coupled</span> together.</li>
+        <li>Using the <span class="symfony">Symfony2 Routing component</span>, we are able to split out the route handling aspect into its own system.</li>
+        <li>We can now create routes on more than just the path, for example make a request for <span class="drupal">JSON, XML or HTML</span> while still using the same path.</li>
+      </ol>
+      <a href="http://www.previousnext.com.au/blog/using-drupal-8s-new-route-controllers" target="_blank" class="small">http://www.previousnext.com.au/blog/using-drupal-8s-new-route-controllers</a>
+    </div>
+    <div id="d8-access-checks" class="step ahead">
+      <h1>Using Access Checks with Routes</h1>
     Procedural access callbacks from Drupal 7 have been replaced by <span class="drupal">AccessCheck</a> services in Drupal 8.
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <i class="fa fa-lock fa-5x bottom"></i>
-  </div>
-  <div id="d7-access-callback" class="step ahead">
-    <h1><span class="drupal">Drupal 7</span> Access Callback</h1>
-    <code class="language-php small">/sites/all/modules/demo/demo.module</code>
-    <pre><code class="language-php">&lt;?php
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <i class="fa fa-lock fa-5x bottom"></i>
+    </div>
+    <div id="d7-access-callback" class="step ahead">
+      <h1><span class="drupal">Drupal 7</span> Access Callback</h1>
+      <code class="language-php small">/sites/all/modules/demo/demo.module</code>
+      <pre><code class="language-php">&lt;?php
 function demo_menu() {
   $items['hello'] = array(
     'title' => 'Demo',
@@ -264,11 +264,11 @@ function demo_anonymous_access_only() {
     return FALSE;
   }
 }</code></pre>
-  </div>
-  <div id="d8-access-check-setup" class="step ahead">
-    <h1><span class="drupal">Drupal 8</span> AccessCheck Discovery</h1>
-    <code class="language-php small">/modules/demo/demo.routing.yml</code>
-    <pre><code class="language-php">demo_final_page:
+    </div>
+    <div id="d8-access-check-setup" class="step ahead">
+      <h1><span class="drupal">Drupal 8</span> AccessCheck Discovery</h1>
+      <code class="language-php small">/modules/demo/demo.routing.yml</code>
+      <pre><code class="language-php">demo_final_page:
   path: '/goodbye'
   defaults:
     _title: 'Demo'
@@ -277,17 +277,17 @@ function demo_anonymous_access_only() {
     _permission: 'access content'
     _access_user_is_anonymous: 'TRUE'
 </code></pre>
-    <code class="language-php small">/modules/demo/demo.services.yml</code>
-    <pre><code class="language-php">services:
+      <code class="language-php small">/modules/demo/demo.services.yml</code>
+      <pre><code class="language-php">services:
   access_check.demo.user_is_anonymous:
     class: Drupal\demo\Access\UserIsAnonymousAccessCheck
     tags:
       - { name: access_check }</code></pre>
-  </div>
-  <div id="d8-access-check-interface" class="step ahead">
-    <h1><span class="drupal">Drupal 8</span> AccessCheckInterface</h1>
-    <code class="language-php small">/modules/demo/lib/Drupal/demo/Access/UserIsAnonymousAccessCheck.php</code>
-    <pre><code class="language-php">&lt;?php
+    </div>
+    <div id="d8-access-check-interface" class="step ahead">
+      <h1><span class="drupal">Drupal 8</span> AccessCheckInterface</h1>
+      <code class="language-php small">/modules/demo/lib/Drupal/demo/Access/UserIsAnonymousAccessCheck.php</code>
+      <pre><code class="language-php">&lt;?php
 
 namespace Drupal\demo\Access;
 
@@ -306,20 +306,20 @@ class UserIsAnonymousAccessCheck implements AccessCheckInterface {
     return (!$account->isAnonymous() ? static::DENY : static::ALLOW);
   }
 }</code></pre>
-  </div>
-  <div id="d8-dynamic-routes" class="step ahead">
-    <i class="fa fa-sitemap fa-5x top"></i>
-    <p>&nbsp;</p>
-    <h1 class="drupal">Dynamic Routes in Drupal 8</h1>
-    <p>What does one do if they need to create a route dynamically?</p>
-    <p>How does one create routes based on things that don't yet exist?</p>
-    <p>In Drupal 7, we created dynamic routes with a loop in <span class="deprecated">hook_menu()</span>.</p>
-    <p>In <span class="drupal">Drupal 8</span>, dynamic routes are created in a callback method.</p>
-  </div>
-  <div id="d7-dynamic-routes-example" class="step ahead">
-    <h1><span class="drupal">Drupal 7</span> Dynamic Route Example</h1>
-    <code class="language-php small">/sites/all/modules/octocat/octocat.module</code>
-    <pre><code class="language-php">&lt;?php
+    </div>
+    <div id="d8-dynamic-routes" class="step ahead">
+      <i class="fa fa-sitemap fa-5x top"></i>
+      <p>&nbsp;</p>
+      <h1 class="drupal">Dynamic Routes in Drupal 8</h1>
+      <p>What does one do if they need to create a route dynamically?</p>
+      <p>How does one create routes based on things that don't yet exist?</p>
+      <p>In Drupal 7, we created dynamic routes with a loop in <span class="deprecated">hook_menu()</span>.</p>
+      <p>In <span class="drupal">Drupal 8</span>, dynamic routes are created in a callback method.</p>
+    </div>
+    <div id="d7-dynamic-routes-example" class="step ahead">
+      <h1><span class="drupal">Drupal 7</span> Dynamic Route Example</h1>
+      <code class="language-php small">/sites/all/modules/octocat/octocat.module</code>
+      <pre><code class="language-php">&lt;?php
 function octocat_menu() {
   $items = array();
   foreach (octocat_get_types() as $type) {
@@ -331,19 +331,19 @@ function octocat_menu() {
   }
   return $items;
 }</code></pre>
-  </div>
-  <div id="d8-dynamic-route-callbacks" class="step ahead">
-    <i class="fa fa-github fa-5x top"></i>
-    <h1 class="drupal">Drupal 8 Dynamic Routing</h1>
-    <h2>Declaring 'route_callbacks' in module.routing.yml</h2>
-    <code class="language-php small">/modules/octocat/octocat.routing.yml</code>
-    <pre><code class="language-php">route_callbacks:
+    </div>
+    <div id="d8-dynamic-route-callbacks" class="step ahead">
+      <i class="fa fa-github fa-5x top"></i>
+      <h1 class="drupal">Drupal 8 Dynamic Routing</h1>
+      <h2>Declaring 'route_callbacks' in module.routing.yml</h2>
+      <code class="language-php small">/modules/octocat/octocat.routing.yml</code>
+      <pre><code class="language-php">route_callbacks:
   - '\Drupal\octocat\Routing\OctoCatRoutes::routes'</code></pre>
-  </div>
- <div id="d8-dynamic-routing-method" class="step ahead">
-    <h2><span class="drupal">Drupal 8 Dynamic Routing</span> Example Routing Method</h2>
-    <code class="language-php small">/modules/octocat/lib/Drupal/octocat/Routing/OctoCatRoutes.php</code>
-    <pre><code class="language-php">&lt;?php
+    </div>
+    <div id="d8-dynamic-routing-method" class="step ahead">
+      <h2><span class="drupal">Drupal 8 Dynamic Routing</span> Example Routing Method</h2>
+      <code class="language-php small">/modules/octocat/lib/Drupal/octocat/Routing/OctoCatRoutes.php</code>
+      <pre><code class="language-php">&lt;?php
 
 namespace Drupal\octocat\Routing;
 
@@ -366,27 +366,27 @@ class OctoCatRoutes {
     return $routes;
   }
 }</code></pre>
-  </div>
-  <div id="d8-cmi-intro" class="step below">
-    <i class="fa fa-hdd-o fa-5x top"></i>
-    <h1 class="drupal">Drupal 8</h1>
-    <h1>Configuration Management</h1>
+    </div>
+    <div id="d8-cmi-intro" class="step below">
+      <i class="fa fa-hdd-o fa-5x top"></i>
+      <h1 class="drupal">Drupal 8</h1>
+      <h1>Configuration Management</h1>
     Drupal 8 has a whole new configuration system that uses human-readable text files in the YAML (.yml) format to store configuration items. All of your site configuration from enabled modules through fields, contact categories to views are stored with this system. The system is designed to make it much easier than prior Drupal versions to export all your site configuration, make changes and import changes back in.
-    <br /><a href="http://drupal.org/documentation/administer/config" target="_blank">http://drupal.org/documentation/administer/config</a>
-  </div>
-  <div id="d8-cmi-example" class="step behind">
-    <h2><span class="drupal">Drupal 8 Example</span> Configuration File</h2>
-    <code class="language-php small">/modules/octocat/config/octocat.settings.yml</code>
-    <pre><code class="language-php">octocats:
+      <br /><a href="http://drupal.org/documentation/administer/config" target="_blank">http://drupal.org/documentation/administer/config</a>
+    </div>
+    <div id="d8-cmi-example" class="step behind">
+      <h2><span class="drupal">Drupal 8 Example</span> Configuration File</h2>
+      <code class="language-php small">/modules/octocat/config/octocat.settings.yml</code>
+      <pre><code class="language-php">octocats:
  - original
  - drupalcat
  - dojocat
  - codercat</code></pre>
-  </div>
-  <div id="d8-cmi-usage" class="step behind">
-    <h2><span class="drupal">Drupal 8 Using Configuration</span> Example Usage</h2>
-    <code class="language-php small">/modules/octocat/lib/Drupal/octocat/Routing/OctoCatRoutes.php</code>
-    <pre><code class="language-php">class OctoCatRoutes {
+    </div>
+    <div id="d8-cmi-usage" class="step behind">
+      <h2><span class="drupal">Drupal 8 Using Configuration</span> Example Usage</h2>
+      <code class="language-php small">/modules/octocat/lib/Drupal/octocat/Routing/OctoCatRoutes.php</code>
+      <pre><code class="language-php">class OctoCatRoutes {
 
   public function routes() {
     $config = \Drupal::config('octocat.settings');
@@ -405,23 +405,23 @@ class OctoCatRoutes {
     return $routes;
   }
 }</code></pre>
-  </div>
-  <div id="dependency-injection" class="step behind">
-    <i class="fa fa-user-md fa-5x top"></i>
-    Isn't it time we talked about
-    <h1 class="drupal">Dependency Injection?</h1>
-    <blockquote>(No, you won't have to get a shot.)</blockquote>
-  </div>
-  <div id="di-quote" class="step behind">
-    <i class="fa fa-money fa-3x bottom"></i>
-    "Dependency Injection" is a 25-dollar term for a 5-cent concept.<br />
-    <blockquote><span class="symfony">-James Shore</span><br />
-    <a href="http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html" target="_blank"/>http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html</a></blockquote>
-    <p>&nbsp;</p>
-  </div>
-  <div id="di-cookie-example" class="step behind">
-    <h2>Dependency Non-Injection</h2>
-    <pre><code class="language-php">class CookieSubscriber {
+    </div>
+    <div id="dependency-injection" class="step behind">
+      <i class="fa fa-user-md fa-5x top"></i>
+      Isn't it time we talked about
+      <h1 class="drupal">Dependency Injection?</h1>
+      <blockquote>(No, you won't have to get a shot.)</blockquote>
+    </div>
+    <div id="di-quote" class="step behind">
+      <i class="fa fa-money fa-3x bottom"></i>
+      "Dependency Injection" is a 25-dollar term for a 5-cent concept.<br />
+      <blockquote><span class="symfony">-James Shore</span><br />
+      <a href="http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html" target="_blank"/>http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html</a></blockquote>
+      <p>&nbsp;</p>
+    </div>
+    <div id="di-cookie-example" class="step behind">
+      <h2>Dependency Non-Injection</h2>
+      <pre><code class="language-php">class CookieSubscriber {
   function __construct() {
     $this->cookie = new RaisinCookie();
   }
@@ -429,8 +429,8 @@ class OctoCatRoutes {
 $gimme = new CookieSubscriber();
 // Returns a cookie with raisins in it. :\
 return $gimme->cookie;</code></pre>
-    <h2>Dependency Injection</h2>
-    <pre><code class="language-php">class CookieSubscriber {
+      <h2>Dependency Injection</h2>
+      <pre><code class="language-php">class CookieSubscriber {
   private $cookie;
   function __construct($cookie) {
     $this->cookie = $cookie;
@@ -440,10 +440,10 @@ $cookie = new ChewyChocolateChipCookie();
 $gimme = new CookieSubscriber($cookie);
 // Returns a chewy chocolate chip cookie. :O
 return $gimme->cookie;</code></pre>
-  </div>
-  <div id="di-tweet-example-first" class="step behind">
-  <h2>Dependency Non-Injection Part Deux</h2>
-  <pre><code class="language-php">class User {
+    </div>
+    <div id="di-tweet-example-first" class="step behind">
+      <h2>Dependency Non-Injection Part Deux</h2>
+      <pre><code class="language-php">class User {
   private $name;
   public function __construct($name) {
     $this->name = $name;
@@ -467,19 +467,19 @@ class Tweet {
     return $this->tweet;
   }
 }</code></pre>
-  </div>
-  <div id="di-tweet-example-wrong" class="step behind">
-  <i class="fa fa-ambulance fa-5x top"></i>
-  <h1 class="symfony">What went wrong?</h1>
-    <ol>
-      <li>The <code class="language-php">$user_name</code> passed to the <code class="language-php">Tweet</code> constructor is not used inside <code class="language-php">Tweet</code>'s scope. <code class="language-php">$user_name</code> should remain inside the <code class="language-php">User</code> class - it has nothing to do with the actual <code class="language-php">Tweet</code> .</li>
-      <li>The <code class="language-php">User</code> class is tightly coupled with the <code class="language-php">Tweet</code> class. If we add a new parameter to <code class="language-php">User</code>'s constructor, we must then modify every class where we've created a <code class="language-php">User</code> object. This is technical debt we'd like to avoid.</li>
-      <li>Unit testing the <code class="language-php">Tweet</code> class is has become a convoluted chore as it now requires testing the <code class="language-php">User</code> class as well.</li>
-    </ol>
-  </div>
-  <div id="di-qa-example-second" class="step behind">
-  <h2>Dependency Injection Corrected</h2>
-  <pre><code class="language-php">class User {
+    </div>
+    <div id="di-tweet-example-wrong" class="step behind">
+      <i class="fa fa-ambulance fa-5x top"></i>
+      <h1 class="symfony">What went wrong?</h1>
+      <ol>
+        <li>The <code class="language-php">$user_name</code> passed to the <code class="language-php">Tweet</code> constructor is not used inside <code class="language-php">Tweet</code>'s scope. <code class="language-php">$user_name</code> should remain inside the <code class="language-php">User</code> class - it has nothing to do with the actual <code class="language-php">Tweet</code> .</li>
+        <li>The <code class="language-php">User</code> class is tightly coupled with the <code class="language-php">Tweet</code> class. If we add a new parameter to <code class="language-php">User</code>'s constructor, we must then modify every class where we've created a <code class="language-php">User</code> object. This is technical debt we'd like to avoid.</li>
+        <li>Unit testing the <code class="language-php">Tweet</code> class is has become a convoluted chore as it now requires testing the <code class="language-php">User</code> class as well.</li>
+      </ol>
+    </div>
+    <div id="di-qa-example-second" class="step behind">
+      <h2>Dependency Injection Corrected</h2>
+      <pre><code class="language-php">class User {
   private $name;
   public function __construct($name) {
     $this->name = $name;
@@ -503,63 +503,111 @@ class Tweet {
     return $this->tweet;
   }
 }</code></pre>
-  </div>
-  <div id="di-diagnosis" class="step behind">
-    <h1 class="drupal">Diagnosis</h1>
-    <i class="fa fa-stethoscope fa-5x top"></i>
+    </div>
+    <div id="di-diagnosis" class="step behind">
+      <h1 class="drupal">Diagnosis</h1>
+      <i class="fa fa-stethoscope fa-5x top"></i>
     Using Dependency Injection relieves the symptoms of tightly coupled, untestable code by inserting the dependencies through the dependent class' constructor. This practice is commonly referred to as <span class="symfony">Constructor Injection</span>.
-  </div>
-  <div id="d8-services-intro" class="step behind">
-    <i class="fa fa-coffee fa-5x top"></i>
-    <p>&nbsp;</p>
-    <h1 class="drupal">Drupal 8</span> Services</h1>
+    </div>
+    <div id="d8-services-intro" class="step behind">
+      <i class="fa fa-coffee fa-5x top"></i>
+      <p>&nbsp;</p>
+      <h1 class="drupal">Drupal 8</span> Services</h1>
     A Service is any PHP object that performs some sort of "global" task. Services are called upon throughout our application whenever we need a specific set of functionality.
-    <ul>
-      <li>A great many of Drupal's functions are now "Services"</li>
-      <li>Completely unrelated to the Drupal "Services" module that dealt with RESTful interfaces and is replaced by core's "REST" module.</li>
-      <li>A Service Container is a PHP object that manages the instantiation of services (other PHP objects).</li>
-      <li>"Service Container" a.k.a. "Dependency Injection Container"</li>
-    </ul>
-  </div>
-  <div id="d8-global-services-container" class="step behind">
-    <p>&nbsp;</p><p>&nbsp;</p>
-    <h1 class="drupal">The <span class="symfony">Global</span> Services Container</h1>
-    <i class="fa fa-globe fa-5x top"></i>
-    Generally, code in Drupal should accept its dependencies via either constructor injection or setter method injection. There are cases, such as procedural code, where this can't be done. The class <code class="language-php">Drupal</code> acts as a global accessor to arbitrary services within the system.
-    <pre><code class="language-php"></code>// Returns a Drupal\Core\Datetime\Date object.
-$date = \Drupal::service('date');</pre>
-    <a href="http://drupal.org/node/2133171" target="_blank">http://drupal.org/node/2133171</a>
-  </div>
-  <div id="d8-services-diff" class="step behind">
-    <h2>Consider the following <span class="drupal">diff</span></h2>
-    <img src="images/container-diff" width="980px"/>
-  </div>
-  <div id="d8-services-example" class="step behind">
-    <h1 class="drupal">What did we do?</h1>
       <ul>
-        <li>Implemented the interface <code class="language-php">ContainerInjectionInterface</code></li>
-        <li>Used <span class="symfony">Constructor Injection</span> providing <code class="language-php">ConfigFactoryInterface</code> as a service.</li>
-        <li>Implemented the factory method <code class="language-php">create</code> inherited from <code class="language-php">ContainerInjectionInterface</code></li>
-        <li>Added a private method called <code class="language-php">octocatSettings</code> that returns the config <code class="language-php">octocat.settings</code> via the injected service.</li>
-        <li>Replaced the global services container with a properly injected service by calling <code class="language-php">octocatSettings</code> inside the <code class="language-php">routes</code> method.</li>
-    </ul>
-  </div>
-  <div id="d8-twig-intro" class="step behind">
-    <i class="fa fa-leaf fa-5x top"></i>
-    <h1 class="drupal">Drupal 8</h1>
-    <h1 class="symfony">Twig Templating</h1>
+        <li>A great many of Drupal's functions are now "Services"</li>
+        <li>Completely unrelated to the Drupal "Services" module that dealt with RESTful interfaces and is replaced by core's "REST" module.</li>
+        <li>A Service Container is a PHP object that manages the instantiation of services (other PHP objects).</li>
+        <li>"Service Container" a.k.a. "Dependency Injection Container"</li>
+      </ul>
+    </div>
+    <div id="d8-global-services-container" class="step behind">
+      <p>&nbsp;</p><p>&nbsp;</p>
+      <h1 class="drupal">The <span class="symfony">Global</span> Services Container</h1>
+      <i class="fa fa-globe fa-5x top"></i>
+    Generally, code in Drupal should accept its dependencies via either constructor injection or setter method injection. There are cases, such as procedural code, where this can't be done. The class <code class="language-php">Drupal</code> acts as a global accessor to arbitrary services within the system.
+      <pre><code class="language-php"></code>// Returns a Drupal\Core\Datetime\Date object.
+$date = \Drupal::service('date');</pre>
+      <a href="http://drupal.org/node/2133171" target="_blank">http://drupal.org/node/2133171</a>
+    </div>
+    <div id="d8-services-diff" class="step behind">
+      <h2>Consider the following <span class="drupal">diff</span></h2>
+      <code class="language-php small">/modules/octocat/lib/Drupal/octocat/Routing/OctoCatRoutes.php</code>
+      <img src="images/container-diff" width="980px"/>
+    </div>
+    <div id="d8-services-example" class="step behind">
+      <h1 class="drupal">What did we do?</h1>
+        <ul>
+          <li>Implemented the interface <code class="language-php">ContainerInjectionInterface</code></li>
+          <li>Used <span class="symfony">Constructor Injection</span> providing <code class="language-php">ConfigFactoryInterface</code> as a service.</li>
+          <li>Implemented the factory method <code class="language-php">create</code> inherited from <code class="language-php">ContainerInjectionInterface</code></li>
+          <li>Added a public method called <code class="language-php">getOctoCats</code> that returns the config <code class="language-php">octocat.settings</code> via the injected service.</li>
+          <li>Replaced the global services container with a properly injected service by calling <code class="language-php">getOctoCats</code> inside the <code class="language-php">routes</code> method.</li>
+      </ul>
+    </div>
+    <div id="d8-service-unit-test-example" class="step behind">
+      <h2>Now we can unit test the provided service!</h2>
+      <pre><code class="language-php">...
+  public function getOctoCatsTest() {
+    $types = array('spectrocat', 'octobiwan');
+    $config = $this->getMockBuilder('Drupal\Core\Config\Config')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $config->expects($this->once())
+      ->method('get')
+      ->with('octocats')
+      ->will($this->returnValue($types));
+    $this->configFactory->expects($this->once())
+      ->method('get')
+      ->with('octocat.settings')
+      ->will($this->returnValue($config));
+    $octocatRoutes = new OctoCatRoutes($this->configFactory);
+    $octocats = $octocatRoutes->getOctoCats();
+    $this->assertNotEmpty($octocats);
+    $this->assertCount(2, $octocats);
+  }</code></pre>
+    </div>
+    <div id="d8-unit-testing" class="step behind">
+      <i class="fa fa-check-square-o fa-5x bottom"></i>
+      <h1><span class="drupal">Automated Testing</span> in Drupal 8</h1>
+    Drupal 8 now supports PHPUnit out of the box. PHPUnit is a unit testing framework created with the view that the sooner you detect your code mistakes, the quicker you can fix them. Writing unit tests for your code will make your code better. Simpletest is still supported but should only be used for web tests and unit tests that require a complete or partial Drupal environment. PHPUnit's tests are faster than SimpleTest and can easily be run via command line.<br />
+      &nbsp;
+      <p class="small">For example, running a single method:</p>
+      <code class="language-php">./vendor/bin/phpunit --filter=MyMethodTest</code><br />
+      <a class="small" href="http://drupal.org/phpunit" target="_blank">http://drupal.org/phpunit</a><br />
+      <a class="small" href="http://phpunit.de" target="_blank">http://phpunit.de</a>
+    </div>
+    <div id ="drush-in-d8" class="step behind">
+      <i class="fa fa-terminal fa-5x top"></i>
+      Speaking of the command line...
+      <h1 class="drupal">Using Drush</h1>
+      Some quick observations about using Drush with Drupal 8
+      <ol>
+        <li>The Drush project has moved all development to Github.</li>
+        <li>Drush is now built using Composer, like so: <code class="language-php">composer global require drush/drush:dev-master</code></li>
+        <li>You must run Drush version 7 or higher when using it with D8.</li>
+        <li>Some commands are deprecated, like <span class="deprecated">drush cache-clear all</span> (Protip: use <span class="drupal">drush cache-rebuild</span>)</li>
+        <li>Other commands are incompatible due to D8 changes, such as <span class="deprecated">drush dis [module]</span> (Hint: try <span class="drupal">drush pmu [module]</span>)</li>
+        <li>Don't panic - drush will explain these changes when you attempt to use a deprecated or incompatible command.</li>
+      </ol>
+      <a href="http://github.com/drush-ops/drush" target="_blank">http://github.com/drush-ops/drush</a>
+    </div>
+    <div id="d8-twig-intro" class="step behind">
+      <i class="fa fa-leaf fa-5x top"></i>
+      <h1 class="drupal">Drupal 8</h1>
+      <h1 class="symfony">Twig Templating</h1>
     Twig is a flexible, fast, and secure template engine for PHP.
-    <ul>
-      <li><em>Fast</em>: Twig compiles templates down to plain optimized PHP code. The overhead compared to regular PHP code was reduced to the very minimum.</li>
-      <li><em>Secure</em>: Twig has a sandbox mode to evaluate untrusted template code. This allows Twig to be used as a template language for applications where users may modify the template design.</li>
-      <li><em>Flexible</em>: Twig is powered by a flexible lexer and parser. This allows the developer to define its own custom tags and filters, and create its own domain-specific language.</li>
-    </ul>
-    <a href="http://twig.sensiolabs.org/documentation" target="_blank">http://twig.sensiolabs.org/documentation</a>
-  </div>
-  <div id="d8-twig-hook-theme" class="step behind">
-    <h2><span class="drupal">Drupal 8 Twig Templating</span> Implementing hook_theme()</h2>
-    <code class="language-php small">/modules/octocat/octocat.module</code>
-    <pre><code class="language-php">function octocat_theme() {
+      <ul>
+        <li><em>Fast</em>: Twig compiles templates down to plain optimized PHP code. The overhead compared to regular PHP code was reduced to the very minimum.</li>
+        <li><em>Secure</em>: Twig has a sandbox mode to evaluate untrusted template code. This allows Twig to be used as a template language for applications where users may modify the template design.</li>
+        <li><em>Flexible</em>: Twig is powered by a flexible lexer and parser. This allows the developer to define its own custom tags and filters, and create its own domain-specific language.</li>
+      </ul>
+      <a href="http://twig.sensiolabs.org/documentation" target="_blank">http://twig.sensiolabs.org/documentation</a>
+    </div>
+    <div id="d8-twig-hook-theme" class="step behind">
+      <h2><span class="drupal">Drupal 8 Twig Templating</span> Implementing hook_theme()</h2>
+      <code class="language-php small">/modules/octocat/octocat.module</code>
+      <pre><code class="language-php">function octocat_theme() {
   return array(
     'octocat_page' => array(
       'variables' => array('type' => NULL),
@@ -567,11 +615,11 @@ $date = \Drupal::service('date');</pre>
     ),
   );
 }</code></pre>
-  </div>
-  <div id="d8-twig-controller" class="step behind">
-  <h2><span class="drupal">Drupal 8 Twig Templating</span> Example Usage</h2>
-    <code class="language-php small">/modules/octocat/lib/Drupal/octocat/Controller/OctoCatController.php</code>
-    <pre><code class="language-php">&lt;?php
+    </div>
+    <div id="d8-twig-controller" class="step behind">
+      <h2><span class="drupal">Drupal 8 Twig Templating</span> Example Usage</h2>
+      <code class="language-php small">/modules/octocat/lib/Drupal/octocat/Controller/OctoCatController.php</code>
+      <pre><code class="language-php">&lt;?php
 
 namespace Drupal\octocat\Controller;
 
@@ -586,14 +634,77 @@ class OctoCatController {
     );
   }
 }</code></pre>
-  </div>
-  <div id="d8-twig-template" class="step behind">
-  <h2><span class="drupal">Drupal 8 Twig Templating</span> Example Template File</h2>
-    <code class="language-php small">/modules/octocat/templates/octocat-page.html.twig</code>
-    <pre><code class="language-php">&lt;div id="octocat-{{ type }}" class="octocat">
+    </div>
+    <div id="d8-twig-template" class="step behind">
+      <h2><span class="drupal">Drupal 8 Twig Templating</span> Example Template File</h2>
+      <code class="language-php small">/modules/octocat/templates/octocat-page.html.twig</code>
+      <pre><code class="language-php">&lt;div id="octocat-{{ type }}" class="octocat">
   &lt;img src="/modules/octocat/images/{{ type }}.jpg" title="{{ type }}" />
 &lt;/div></code></pre>
-  </div>
+    </div>
+    <div id="d8-plugins-case" class="step behind">
+      <i class="fa fa-briefcase fa-5x top"></i>
+      <h1 class="drupal">The case for Plugins in core</h1>
+      In Drupal 7 and earlier, we had a number of systems that were pluggable, but they all worked differently.  If you wanted to work with blocks, you learned about <code class="language-php">hook_block_info</code> and <code class="language-php">hook_block_view</code> (at a minimum). If you wanted to learn about Views or Panels, you leared about the CTools module and its advanced plugin system, etc.<br />
+      For every system in Drupal, there was an entire lexicon to learn, multiple hooks to leverage, config gotchas and other "unique snowflake" architecture built into the system.<br />
+      <h2 class="deprecated">In short, we were in Plugin hell.</h2>
+      <a class="small" href="http://drupal.org/node/1637614" target="_blank">http://drupal.org/node/1637614</a>
+    </div>
+    <div id="d8-plugins-intro" class="step behind">
+      <i class="fa fa-puzzle-piece fa-5x bottom"></i>
+      <h1><span class="drupal">Drupal 8</span> The Plugin System</h1>
+      In D8, we have a universal plugin system. Many core components are now discreet objects and many others are still being converted to these "plugins." What started with the Blocks and Views initiatives has spread like a gospel to everything from Fields to Image effects to *gasp* ...even Breadcrumbs!
+      <blockquote>"You just have to learn one single idea and you can apply it anywhere."<br /><span class="drupal">-Daniel Wehner</span></blockquote>
+      <a class="small" href="https://www.acquia.com/resources/podcasts/acquia-podcast-104-drupal-8-kittens-2-of-4">Drupal 8 wins: unified entities n' plugins!</a>
+    </div>
+    <div id="d8-plugin-usage" class="step behind">
+      <h2><span class="drupal">Drupal 8 Plugins</span> Example Usage</h2>
+      <code class="language-php small">/modules/demo/lib/Drupal/demo/Plugin/Block/DemoBlock.php</code>
+      <pre><code class="language-php">/**
+ * Provides a demo block.
+ *
+ * @Block(
+ *   id = "demo_block",
+ *   admin_label = @Translation("Demo Block")
+ * )
+ */
+class DemoBlock extends BlockBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    return array(
+      'text' => 'Default text',
+    );
+  }
+...</code></pre>
+    </div>
+    <div id="d8-plugins-annotations" class="step behind">
+      <i class="fa fa-comments fa-4x top"></i>
+      <h1><span class="drupal">Drupal 8</span> Plugin Annotations</h1>
+      We need to be able to discover plugins automatically. We did not want to do this with hooks. Adding a <code class="language-php">getInfo()</code> method on each plugin class would be a huge memory overhead, requiring parsing the PHP of every plugin class during discovery.
+      <pre><code class="language-php">/**
+ * Provides a demo block.
+ *
+ * @Block(
+ *   id = "demo_block",
+ *   admin_label = @Translation("Demo Block")
+ * )
+ */</code></pre>
+     <strong class="symfony">Enter Doctrine's Annotation mechanism</strong> <span class="drupal">(Patched by chx to use the php tokenizer)</span>
+     Annotations are now available as a mechanism for plugin discovery (replacing info hooks)!
+     <a href="http://drupal.org/node/1683644">https://drupal.org/node/1683644</a>
+    </div>
+    <div id="d8-end" class="step behind">
+      <i class="fa fa-tint fa-5x top"></i>
+      <h1 class="drupal">Questions?</h1>
+      <ul>
+        <li>Examples: <a href="http://github.com/brantwynn/d8demo" target="_blank">http://github.com/brantwynn/d8demo</a></li>
+        <li>Slides: <a href="http://brantwynn.github.io/d8slides" target="_blank">http://brantwynn.github.io/d8slides</a></li>
+        <li>Twitter: <a href="http://twitter.com/brantwynn" target="_blank">@brantwynn</a></li>
+      </ul>
+    </div>
   <!-- End slides -->
   </div>
   <div class="hint">
