@@ -10,33 +10,23 @@ var imps = {
   w: $(window).width(),
   h: $(window).height(),
   init: function() {
-    // TRBL imps
-    $(".step.above").each(function() {
-      a = 'data-y';
-      p = ($(this).prev().attr(a)) ? parseInt($(this).prev().attr(a)) : 0; 
-      $(this).attr(a, p-imps.h);
-      imps.cleanup($(this));
-    });
-    $(".step.ahead").each(function() {
-      a = 'data-x';
-      p = ($(this).prev().attr(a)) ? parseInt($(this).prev().attr(a)) : 0;
-      $(this).attr(a, p+imps.w);
-      imps.cleanup($(this));
-    });
-    $(".step.below").each(function() {
-      a = 'data-y';
-      p = ($(this).prev().attr(a)) ? parseInt($(this).prev().attr(a)) : 0; 
-      $(this).attr(a, p+imps.h);
-      imps.cleanup($(this));
-    });
-    $(".step.behind").each(function() {
-      a = 'data-x';
-      p = ($(this).prev().attr(a)) ? parseInt($(this).prev().attr(a)) : 0;
-      $(this).attr(a, p-imps.w);
-      imps.cleanup($(this));
+    $(".step").each(function() {
+      imps.place($(this));
+      imps.clean($(this));
     });
   },
-  cleanup: function($step) {
+  place: function($step) {
+    x = imps.prev($step, 'data-x');
+    y = imps.prev($step, 'data-y');
+    if ($step.hasClass('above'))  $step.attr('data-y', y-imps.h);
+    if ($step.hasClass('below'))  $step.attr('data-y', y+imps.h);
+    if ($step.hasClass('ahead'))  $step.attr('data-x', x+imps.w);
+    if ($step.hasClass('behind')) $step.attr('data-x', x-imps.w);
+  },
+  prev: function($step, $data) {
+    return ($step.prev().attr($data)) ? parseInt($step.prev().attr($data)) : 0;
+  },
+  clean: function($step) {
     a = ['data-x', 'data-y'];
     a.forEach(function(e) {
       n = ($step.attr(e)) ? $step.attr(e) : $step.prev().attr(e);

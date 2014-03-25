@@ -521,6 +521,19 @@ class Tweet {
         <li>"Service Container" a.k.a. "Dependency Injection Container"</li>
       </ul>
     </div>
+    <div id="d8-services-registration" class="step behind">
+      <h1 class="drupal">Services Registration</h1>
+      Similar to an "info hook" in previous Drupal versions, we define a service in a *.services.yml file. Many services are already provided by core in <code class="language-php">/core/core.services.yml</code>
+      <pre><code class="language-php small">services:
+  cache_factory:
+    class: Drupal\Core\Cache\CacheFactory
+    arguments: ['@settings']
+    calls:
+      - [setContainer, ['@service_container']]
+...</code></pre>
+      But you may need to define your own services, for example, when providing custom interfaces.  Thankfully, its a simple as providing your own <code class="language-php">mymodule.services.yml</code> file for Drupal to discover.<br />
+      <a class="small" href="http://www.palantir.net/blog/d8ftw-breadcrumbs-work" target="_blank">http://www.palantir.net/blog/d8ftw-breadcrumbs-work</a>
+    </div>
     <div id="d8-global-services-container" class="step behind">
       <p>&nbsp;</p><p>&nbsp;</p>
       <h1 class="drupal">The <span class="symfony">Global</span> Services Container</h1>
@@ -696,7 +709,7 @@ class DemoBlock extends BlockBase {
      Annotations are now available as a mechanism for plugin discovery (replacing info hooks)!
      <a href="http://drupal.org/node/1683644">https://drupal.org/node/1683644</a>
     </div>
-    <div id="d8-end" class="step behind">
+    <div id="d8-end" class="step above behind">
       <i class="fa fa-question-circle fa-5x top"></i>
       <h1 class="drupal">Questions?</h1>
       Join #drupal-contribute on irc.freenode.net
