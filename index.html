@@ -109,14 +109,31 @@ dependencies:
         <li>Alphabetic characters in vendor names, namespaces, and class names may be of any combination of lower case and upper case.</li>
       </ul>
     </div>
-    <div id="psr-0-examples" class="step ahead">
+   <div id="psr-0-examples" class="step ahead">
       <h1 class="drupal">PSR-0 Examples</h1>
       <pre><code class="language-php">\Guzzle\Common\Event => /Guzzle/Common/Event.php</code></pre>
       <pre><code class="language-php">\Symfony\Component\Yaml\Parser => /Symfony/Component/Yaml/Parser.php</code></pre>
       <pre><code class="language-php">\Drupal\Core\Config\FileStorage => /Drupal/Core/Config/FileStorage.php</code></pre>
       <pre><code class="language-php">\namespace\package\Class_Name => /namespace/package/Class/Name.php</code></pre>
     </div>
-      <div id="psr-0-avoid-col" class="step ahead">
+    <div id="psr-0-psr-4" class="step ahead">
+      <h1><span class="drupal">Drupal 8</span> Now with PSR-4!</h1>
+      Before (PSR-0)
+<pre><code class="language-php">/modules/my_module/my_module.info.yml
+/modules/my_module/lib/Drupal/my_module/MyModuleClass.php
+/modules/my_module/lib/Drupal/my_module/Entity/MyEntity.php              # Plugin
+/modules/my_module/lib/Drupal/my_module/Tests/MyEntityTest.php           # Simpletest
+/modules/my_module/tests/Drupal/my_module/Tests/Entity/MyEntityTest.php  # PHPUnit
+</pre></code>
+After (PSR-4)
+<pre><code class="language-php">/modules/my_module/my_module.info.yml
+/modules/my_module/src/MyModuleClass.php
+/modules/my_module/src/Entity/MyEntity.php            # Plugin
+/modules/my_module/src/Tests/MyEntityTest.php         # Simpletest
+/modules/my_module/tests/src/Entity/MyEntityTest.php  # PHPUnit
+</pre></code>
+    </div>
+    <div id="psr-0-avoid-col" class="step ahead">
       <h1>Avoiding <span class="symfony">Namespace Collisions</span></h1>
       <img src="images/psr-0-avoid-col.png" width="980px" />
       <pre><code class="language-php">namespace Guzzle\Common;
@@ -133,7 +150,8 @@ class Event extends SymfonyEvent implements ToArrayInterface, \ArrayAccess, \Ite
       <div id="autoloading-d8-module" class="step ahead">
         <h1 class="drupal">Drupal 8 Module</h1>
         <code class="language-php">\Drupal\demo\Controller\MyController =></code>
-        <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/MyController.php</code>
+        <code class="language-php small">/modules/demo/lib/Drupal/demo/Controller/MyController.php</code> (PSR-0)
+        <code class="language-php small">/modules/demo/src/Controller/MyController.php</code> (PSR-4)
         <pre><code class="language-php">namespace Drupal\demo\Controller;
 
 class MyController {
