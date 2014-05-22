@@ -119,18 +119,18 @@ dependencies:
     <div id="psr-0-psr-4" class="step ahead">
       <h1><span class="drupal">Drupal 8</span> Now with PSR-4!</h1>
       Before (PSR-0)
-<pre><code class="language-php">/modules/my_module/my_module.info.yml
-/modules/my_module/lib/Drupal/my_module/MyModuleClass.php
-/modules/my_module/lib/Drupal/my_module/Entity/MyEntity.php              # Plugin
-/modules/my_module/lib/Drupal/my_module/Tests/MyEntityTest.php           # Simpletest
-/modules/my_module/tests/Drupal/my_module/Tests/Entity/MyEntityTest.php  # PHPUnit
+<pre><code class="language-php">my_module/my_module.info.yml
+my_module/lib/Drupal/my_module/MyModuleClass.php
+my_module/lib/Drupal/my_module/Entity/MyEntity.php              # Plugin
+my_module/lib/Drupal/my_module/Tests/MyEntityTest.php           # Simpletest
+my_module/tests/Drupal/my_module/Tests/Entity/MyEntityTest.php  # PHPUnit
 </pre></code>
 After (PSR-4)
-<pre><code class="language-php">/modules/my_module/my_module.info.yml
-/modules/my_module/src/MyModuleClass.php
-/modules/my_module/src/Entity/MyEntity.php            # Plugin
-/modules/my_module/src/Tests/MyEntityTest.php         # Simpletest
-/modules/my_module/tests/src/Entity/MyEntityTest.php  # PHPUnit
+<pre><code class="language-php">my_module/my_module.info.yml
+my_module/src/MyModuleClass.php
+my_module/src/Entity/MyEntity.php            # Plugin
+my_module/src/Tests/MyEntityTest.php         # Simpletest
+my_module/tests/src/Entity/MyEntityTest.php  # PHPUnit
 </pre></code>
     <a href="http://drupal.org/node/2246699" target="_blank">http://drupal.org/node/2246699</a>
     </div>
